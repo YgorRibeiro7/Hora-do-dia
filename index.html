@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hora do Dia</title>
+    <style type="text/css">
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: 0;
+        }
+        header{
+             text-shadow: 2px 2px 2px #000;
+            color: white;
+            margin: 0 auto;
+            margin-top: 200px;
+        }
+        body{
+            background: rgb(63, 45, 45);
+            display: flex;
+            flex-direction: column;
+           width: 100vw;
+           height: 100vh;
+        }
+        section{
+            background-image: linear-gradient(to right bottom, #f9f9f9, #efeff7, #e3e4f6, #d6dbf5, #c7d2f4, #bbd0f4, #aecff2, #a0cdf0, #98d0eb, #95d3e4, #96d5dc, #9bd6d3);
+            /*flex-grow: 1;*/
+            width: 50%;
+            height: 300px;
+            margin: 0 auto;
+            border-radius: 10px;
+        }
+        footer{
+             text-shadow: 4px 4px 4px #000;
+            color: white;
+            margin: 0 auto;
+            line-height: 40px;
+        }
+        img{
+            width: 38%;
+             margin-left: 35%;
+           border-radius: 50px;
+           box-shadow: 3px 3px 3px #000;
+          margin-top: 10px;
+        }
+       /* p{
+            margin-left: 300px;
+            margin-top: 50px;
+                     
+        }*/
+        #texto{
+            margin-left: 40%;
+            margin-top: 50px;
+        }
+        @media (max-width:1000px){
+            section{
+                width: 70%;
+
+            }
+            img{
+                width: 70%;
+                margin:0 auto;
+                margin-left: 20%;
+                margin-top: 43px;
+            }
+            #texto{
+                margin: 0 auto;
+                margin-left: 10px;
+                margin-top: 50px;
+            }
+        }
+    </style>
+</head>
+<body id="corpo" onload="carregar()"><!--Aqui foi  criado um cod , para quando eu carregar a pagina o cod será acionado-->
+<header>
+    <h2> Hora do dia</h2>
+</header>
+
+<section>
+    <div id="texto">
+      <!--<p >Agora são exatamente :</p>-->
+    </div> 
+    <br>
+    <hr>
+     <div id="foto">
+      <!--<img src="img/De  dia.jpg" alt="de  dia" >-->
+     </div> 
+     <div id="res">
+
+     </div>
+</section>
+<footer>
+&copy; CursoemVideos
+</footer>
+<script>
+  var text = document.querySelector('div#texto')// Aqui eu peguie o ID#TEXTO e  passei para a variavel text, para mostrar a mensagem na  tela "Agora sao exatamente..."
+  var bod = document.querySelector('body#corpo')//Aqui eu peguei o ID#CORPO e passei para a varialvel bod, para  mudar o fundo da  página
+
+  function carregar(){
+    
+    var agora = new Date()//Aqui eu criei um  new Date() e passei para a  variavel agora.
+    var hora = agora.getHours()// Aqui eu peguei as horas do computador getHours e a variavel AGORA  , e passei para a variavel HORA
+    var segundo = agora.getMinutes()
+    var res = document.querySelector('div#res')
+    var img = document.createElement('img')
+    img.setAttribute('id','foto')
+
+   
+
+    if( hora >= 13 && hora <= 17){
+        text.innerHTML += ` Agora são exatamente <strong>${hora} horas:</strong> e ${segundo}min`
+        img.setAttribute('src','img/Fim-de-tarde.jpg')
+        bod.style.background =' #999f5d'
+    }else if (hora >= 6 && hora <= 11){ 
+        text.innerHTML += `Agora são exatamente <strong> ${hora} horas </strong> e <strong>${segundo} min</strong>`
+        img.setAttribute('src','img/amanhecer.jpg')
+        bod.style.background = '#9BD6D3'
+
+    } else if ( hora >= 18 && hora <= 23) {
+        text.innerHTML += `Agora são exatamente <strong> ${hora} horas <strong> e ${segundo}min`
+        img.setAttribute('src', 'img/anoite4.jpg')
+        bod.style.background = 'black'
+
+    }
+
+    res.appendChild(img)// Esse cod faz  com  que a imagem IMG apareça na tela
+  }
+</script>
+</body>
+</html>
